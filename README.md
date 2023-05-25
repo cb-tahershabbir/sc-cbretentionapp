@@ -7,7 +7,7 @@ Demo environments to showcase Chargebee Retention (formerly Brightback) API and 
 These demo sites are connected to Chargebee Billing for customer and subscription data.
 
 - SaaS Demo example connected to `scdemoa-test.chargebee.com`, connected via Retention API
-- E-commerce Demo example connted to `scdemob-test.chargebee.com`, connected via Brightback.JS
+- E-commerce Demo example connected to `scdemob-test.chargebee.com`, connected via Brightback.JS
 
 ## Usage
 
