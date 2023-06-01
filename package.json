@@ -2,23 +2,17 @@
   "name": "sc-retention-integration",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
-    "start": "node index.html"
+    "start": "node index.js"
   },
-  "author": "Chargebee Solutions Consulting",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "chargebee": "^2.7.0",
     "cool-ascii-faces": "^1.3.4",
     "cors": "^2.8.4",
-    "express": "^4.16.2",
-    "apexcharts": "^3.37.0",
-    "bootstrap": "^5.2.3",
-    "jquery": "^3.6.3"
-  },
-  "devDependencies": {
-    "sass": "^1.54.8"
+    "express": "^4.16.2"
   },
   "engines": {
     "node": "14.17.1"
