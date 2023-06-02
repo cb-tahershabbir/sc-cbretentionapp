@@ -8,7 +8,11 @@
 
 <body>
   <h3>Retention JS Test</h3>
-
+  <style>
+    fieldset {
+      border: 0px;
+    }
+  </style>
   <div class='form-modal'>
     <form onsubmit='window.generateBrightbackLink(event)'>
       <fieldset>
@@ -32,8 +36,7 @@
       <p></p>
 
       <button type='submit'>Generate Link</button>
-
-      <hr />
+      <p></p>
 
       <fieldset>
         <label>
@@ -46,7 +49,7 @@
           window.open(document.querySelector('#url-destination').value, "_blank");
         };
       </script>
-      <button type='button' id='link-destination' onclick="followLink()">Launch Cancel Experience</button>
+      <button type='button' id='link-destination' onclick="followLink()">Launch Cancel</button>
     </form>
   </div>
 
