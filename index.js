@@ -58,6 +58,26 @@ app.post("/api/generate_portal_session", (req, res) => {
   });
 });
 
+// Portal via API
+app.post("/api/generate_portal_session", (req, res) => {
+  chargebee.configure({
+    site: "test usecase",
+    api_key: "test_QNFQvyrZr7PccdY9rLaT3Q9IjVfA4d9se"
+  });
+  chargebee.portal_session.create({
+    customer: {
+      id: "16CM8iTTuvxMT8j3"
+    }
+  }).request(function (error, result) {
+    if (error) {
+      //handle error
+      console.log(error);
+    } else {
+      res.send(result.portal_session);
+    }
+  });
+});
+
 // Hybrid Checkout via API
 app.post("/api/generate_hybrid_checkout_new_url", (req, res) => {
   chargebee.configure({
