@@ -37,7 +37,6 @@ app.post("/api/generate_checkout_new_url", (req, res) => {
   });
 });
 
-
 // Portal via API
 app.post("/api/generate_portal_session", (req, res) => {
   chargebee.configure({
@@ -170,7 +169,6 @@ app.post("/api/create_customers", (req, res) => {
 });
 
 /* Create Payment Intent */
-
 app.post("/api/create_payment_intent", (req, res) => {
   chargebee.configure({
     site: "checkoutexamples-test",
@@ -191,8 +189,6 @@ app.post("/api/create_payment_intent", (req, res) => {
     }
   });
 });
-
-
 
 /*Create Customer*/
 app.post("/api/create_customer_3ds", (req, res) => {
@@ -229,7 +225,6 @@ app.post("/api/create_customer_3ds", (req, res) => {
   });
 });
 
-
 function getRandomString(length) {
   var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   var result = '';
@@ -238,7 +233,6 @@ function getRandomString(length) {
   }
   return result;
 }
-
 
 app.listen(process.env.PORT || 8000,
   () => console.log("Server is running..."));

@@ -22,3 +22,4 @@ The page source for `cancelapi.html` and `canceljs.html` contain the `<script>` 
 1. Use the browser Console to view and any logged errors.
 2. The JS integration will not work when run from localhost. See [article](https://help.brightback.com/article/43-installing-brightback#:~:text=Testing%C2%A0Chargebee%20Retention.js%20from%20localhost%3A) for more details.
 3. Further errors can be viewed and debugged in the connected Retention sites.
+4. The dashboard sites have a hidden test-api.html and test-js.html pages respectively that don’t have the styling applied for easier code debugging.
