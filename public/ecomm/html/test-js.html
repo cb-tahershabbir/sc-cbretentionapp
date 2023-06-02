@@ -4,7 +4,7 @@
 
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Retention LINK GENERATOR</title>
+  <title>Retention Link Generator</title>
 
 
 </head>
@@ -88,7 +88,7 @@
         })
           .then(function (result) {
             if (result.valid) {
-              document.querySelector('#url-destination').value = result.url + "isdryRun=true";
+              document.querySelector('#url-destination').value = result.url + "?isdryRun=true";
             }
           });
       }
