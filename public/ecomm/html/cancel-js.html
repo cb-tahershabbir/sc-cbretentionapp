@@ -127,33 +127,56 @@
       <div class="container-fluid">
         <div class="container-fluid">
           <div class="container-fluid">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4">Submit your Retention JS Snippet</h5>
-                <div class="card">
-                  <div class="card-body">
-                    <form class="row g-3">
+            <form class="row g-3" onsubmit='window.generateBrightbackLink(event)'>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title fw-semibold mb-4">Submit your Retention JS Snippet</h5>
+                  <div class="card">
+                    <div class="card-body">
                       <div class="col-md-12">
                         <label for="appname" class="form-label">Retention App Name</label>
                         <div id="subHead" style="vertical-align: text-bottom;">ecommerce_retention_demo_1062904207</div>
                       </div>
-                      <div class="col-md-6">
+                      <!--<div class="col-md-6">
                         <label for="accountid" class="form-label">Account ID</label>
                         <input type="text" class="form-control" id="accountid">
                         <div id="accountHelp" class="form-text">Enter your Chargebee Customer ID</div>
+                      </div>-->
+                      <div class="row">
+                        <p></p>
                       </div>
                       <div class="col-md-6">
                         <label for="subid" class="form-label">Subscription ID</label>
-                        <input type="text" class="form-control" id="subid">
-                        <div id="subHelp" class="form-text">Enter the Susbcription ID to cancel</div>
+                        <input type="text" class="form-control" id="sub_id"
+                          placeholder="Enter the Susbcription ID to cancel">
+                        <div id="subHelp" class="form-text">REQUIRED</div>
                       </div>
                       <div class="col-12" style="text-align: center;">
-                        <button id="bb-cancel" class="btn btn-outline-danger" href="/fallback">Submit Cancel</button>
-                    </form>
+                        <button id="bb-cancel" class="btn btn-outline-primary" type='submit'>Generate Link</button>
+                      </div>
+                      <div class="col-md-6">
+                        <fieldset>
+                          <span>Generated Link </span>
+                          <input type='text' class="form-control col-lg-12" id='url-destination'
+                            onclick="this.select();" />
+                        </fieldset>
+                      </div>
+                      <script> function followLink() {
+                          window.open(document.querySelector('#url-destination').value, "_blank");
+                        };
+                      </script>
+                      <div class="row">
+                        <p></p>
+                      </div>
+                      <div class="col-12" style="text-align: center;">
+                        <button type='button' class="btn btn-outline-danger" id='link-destination'
+                          onclick="followLink()">Submit Cancel</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -164,18 +187,53 @@
   <script src="../assets/js/sidebarmenu.js"></script>
   <script src="../assets/js/app.min.js"></script>
   <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
-  <script>
-    var subId = document.getElementById('subid').value;
-    var accountId = document.getElementById('accountid').value;
-    if (window.Brightback) {
-      window.Brightback.handleData({
-        "app_id": "zKbrjpADGY",
-        "subscription_id": subId,
-        "account": {
-          "internal_id": accountId
-        }
-      })
+
+  <script type='text/javascript'>
+    const serializeForm = function (formElement) {
+      return [...formElement.elements]
+        .filter((element) => element.value)
+        .reduce(function (memo, element) {
+          memo[element.name] = element.value;
+          return memo;
+        }, {});
     }
+
+    window.generateBrightbackLink = function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+
+      const attributes = serializeForm(event.target);
+
+      if (window.Brightback) {
+        window.Brightback.handleDataPromise({
+          app_id: "zKbrjpADGY",
+          subscription_id: attributes.sub_id,
+//        email: attributes.email,
+          account: {
+            internal_id: attributes.sub_id,
+          },
+        })
+          .then(function (result) {
+            if (result.valid) {
+              document.querySelector('#url-destination').value = result.url + "isdryRun=true";
+            }
+          });
+      }
+    }
+
+//    Old code!
+//    var subId = document.getElementById('subid').value;
+//    var accountId = document.getElementById('accountid').value;
+//    if (window.Brightback) {
+//      window.Brightback.handleData({
+//        "app_id": "zKbrjpADGY",
+//        "subscription_id": subId,
+//        "account": {
+//          "internal_id": accountId
+//        }
+//      })
+//    }
+
   </script>
 </body>
 
