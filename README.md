@@ -11,9 +11,9 @@ These demo sites are connected to Chargebee Billing for customer and subscriptio
 
 ## Usage
 
-Set up customers and subscriptions on the above Chargebee billing instances. In the above examples, the appId's linking these example sites to their respective Chargebee Retention apps are hardcoded.
+Set up customers and subscriptions on the above Chargebee billing instances. In the above examples, the App ID's linking these example sites to their respective Chargebee Retention apps are hardcoded.
 
-In the Cancel pages of example site, use the Customer ID and Subscription ID to generate the personalized cancel page.
+In the Cancel pages of the example sites, use the Subscription ID to generate the personalized cancel page.
 
 The page source for `cancelapi.html` and `canceljs.html` contain the `<script>` tags with the working code block.
 
