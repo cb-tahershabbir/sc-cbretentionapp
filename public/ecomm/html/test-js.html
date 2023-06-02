@@ -1,41 +1,35 @@
 <html lang='en'>
 
 <head>
-
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Retention Link Generator</title>
-
-
+  <title>Retention JS</title>
 </head>
 
 <body>
-  <h3>Retention Link Generator</h3>
+  <h3>Retention JS Test</h3>
 
   <div class='form-modal'>
     <form onsubmit='window.generateBrightbackLink(event)'>
-
-
       <fieldset>
         <label>
           <span>Email Address</span>
-          <input placeholder="canceller's email address..." name='email' type='text' required />
+          <input placeholder="Customer Email" name='email' type='text' required />
         </label>
       </fieldset>
       <fieldset>
         <label>
-          <span>Subscription Id</span>
-          <input placeholder="canceller's subscription or internal id..." name='sub_id' type='text' required />
+          <span>Subscription ID</span>
+          <input placeholder="Subscription ID" name='sub_id' type='text' required />
         </label>
       </fieldset>
       <fieldset>
         <label>
           <span>Retention App ID</span>
-          <input placeholder="Brightback app_Id..." name='app_id' type='text' required />
+          <input placeholder="Brightback App ID" name='app_id' type='text' required />
         </label>
       </fieldset>
-
-
+      <p></p>
 
       <button type='submit'>Generate Link</button>
 
@@ -45,9 +39,9 @@
         <label>
           <span>Generated Link: </span>
           <input type='text' id='url-destination' onclick="this.select();" />
-
         </label>
       </fieldset>
+      <p></p>
       <script> function followLink() {
           window.open(document.querySelector('#url-destination').value, "_blank");
         };
