@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel='stylesheet'
     href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&amp;family=Poppins:wght@400;500;600&amp;display=swap'>
-  <link rel="stylesheet" href="./assets/css/portal.css">
+  <link rel="stylesheet" href="portal (1).css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://js.chargebee.com/v2/chargebee.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -46,10 +46,10 @@
       <div class="sidebar_inner">
         <!-- person block-->
         <div class="person">
-          <img src="./assets/user_icon_150670.png" alt="profile_picture" class="profileImg" />
+          <img src="dpicon.png" alt="profile_picture" class="profileImg" />
           <div class="description">
-            <span class="descriptionName">Michael Sweet</span>
-            <span class="descriptionMail"> m.sweet@cbee.com</span>
+            <span class="descriptionName">Peter Parker</span>
+            <span class="descriptionMail">premium@customer2.com</span>
           </div>
         </div>
         <!-- navbar-->
@@ -168,7 +168,7 @@
                       d="M2.00004 0.333252C1.08337 0.333252 0.333374 1.08325 0.333374 1.99992C0.333374 2.91658 1.08337 3.66658 2.00004 3.66658C2.91671 3.66658 3.66671 2.91658 3.66671 1.99992C3.66671 1.08325 2.91671 0.333252 2.00004 0.333252ZM12 0.333252C11.0834 0.333252 10.3334 1.08325 10.3334 1.99992C10.3334 2.91658 11.0834 3.66658 12 3.66658C12.9167 3.66658 13.6667 2.91658 13.6667 1.99992C13.6667 1.08325 12.9167 0.333252 12 0.333252ZM7.00004 0.333252C6.08337 0.333252 5.33337 1.08325 5.33337 1.99992C5.33337 2.91658 6.08337 3.66658 7.00004 3.66658C7.91671 3.66658 8.66671 2.91658 8.66671 1.99992C8.66671 1.08325 7.91671 0.333252 7.00004 0.333252Z"
                       fill="#C2CFE0" />
                   </svg>
-                  <span class="nav-label" id="cb-portal">Manage Billing</span>
+                  <span class="nav-label" id="cb-portal">Manage Account</span>
                 </div>
               </a>
             </li>
@@ -252,7 +252,7 @@
               <p class="task-date"><span>Due date: </span>December 23, 2018</p>
               <div class="task-footer">
                 <figure>
-                  <img src="./assets/user_icon_150670.png" alt="profile_picture" class="task-person-img" />
+                  <img src="dpicon.png" alt="profile_picture" class="task-person-img" />
                   <figcaption class="task-person-name">Haagen Plant</figcaption>
                 </figure>
 
@@ -284,7 +284,7 @@
               <p class="task-date"><span>Due date: </span>December 23, 2018</p>
               <div class="task-footer">
                 <figure>
-                  <img src="./assets/user_icon_150670.png" alt="profile_picture" class="task-person-img" />
+                  <img src="dpicon.png" alt="profile_picture" class="task-person-img" />
                   <figcaption class="task-person-name">Tommy Haas</figcaption>
                 </figure>
                 <div class="icon">
@@ -314,7 +314,7 @@
               <p class="task-date"><span>Due date: </span>December 23, 2018</p>
               <div class="task-footer">
                 <figure>
-                  <img src="./assets/user_icon_150670.png" alt="profile_picture" class="task-person-img" />
+                  <img src="dpicon.png" alt="profile_picture" class="task-person-img" />
                   <figcaption class="task-person-name">Max Steinfield</figcaption>
                 </figure>
                 <div class="icon">
@@ -416,7 +416,7 @@
   <script src="./script.js"></script>
   <script>
     $(document).ready(function () {
-      var cbInstance = window.Chargebee.init({ site: "checkoutexamples-test" });
+      var cbInstance = window.Chargebee.init({ site: "retentiondemo-test" });
       var url = window.location.href
       var arr = url.split("/");
       var domain = arr[0] + "//" + arr[2];

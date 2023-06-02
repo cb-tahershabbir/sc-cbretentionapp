@@ -41,12 +41,12 @@ app.post("/api/generate_checkout_new_url", (req, res) => {
 // Portal via API
 app.post("/api/generate_portal_session", (req, res) => {
   chargebee.configure({
-    site: "checkoutexamples-test",
-    api_key: "test_kUATb6hFHyLZsOLYhnPOQJ2jZnAys5JY"
+    site: "retentiondemo-test",
+    api_key: "test_QNFQvyrZr7PccdY9rLaT3Q9IjVfA4d9se"
   });
   chargebee.portal_session.create({
     customer: {
-      id: "16BjhnSq5Ut9CWRA"
+      id: "6olOsTTHoBwTi1"
     }
   }).request(function (error, result) {
     if (error) {
