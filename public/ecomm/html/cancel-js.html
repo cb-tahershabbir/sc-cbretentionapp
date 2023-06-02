@@ -147,12 +147,12 @@
                       </div>
                       <div class="col-md-6">
                         <label for="subid" class="form-label">Subscription ID</label>
-                        <input type="text" class="form-control" id="sub_id"
-                          placeholder="Enter the Susbcription ID to cancel">
+                        <input type='text' class="form-control" id='sub_id'
+                          placeholder="Enter the Susbcription ID to cancel" required />
                         <div id="subHelp" class="form-text">REQUIRED</div>
                       </div>
                       <div class="col-12" style="text-align: center;">
-                        <button id="bb-cancel" class="btn btn-outline-primary" type='submit'>Generate Link</button>
+                        <button class="btn btn-outline-primary" type='submit'>Generate Link</button>
                       </div>
                       <div class="col-md-6">
                         <fieldset>
@@ -208,14 +208,13 @@
         window.Brightback.handleDataPromise({
           app_id: "zKbrjpADGY",
           subscription_id: attributes.sub_id,
-//        email: attributes.email,
           account: {
             internal_id: attributes.sub_id,
           },
         })
           .then(function (result) {
             if (result.valid) {
-              document.querySelector('#url-destination').value = result.url + "isdryRun=true";
+              document.querySelector('#url-destination').value = result.url + "?isdryRun=true";
             }
           });
       }

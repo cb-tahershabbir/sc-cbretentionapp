@@ -1,99 +1,100 @@
-
 <html lang='en'>
-  <head>
 
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Retention LINK GENERATOR</title>
+<head>
 
-
-  </head>
-  <body>
-        <h3>Retention Link Generator</h3>
-
-    <div class='form-modal'>
-      <form onsubmit='window.generateBrightbackLink(event)'>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Retention LINK GENERATOR</title>
 
 
-   <fieldset>
-          <label>
-            <span>Email Address</span>
-            <input placeholder="canceller's email address..." name='email' type='text' required/>
-          </label>
-   </fieldset>
-   <fieldset>
-          <label>
-            <span>Subscription Id</span>
-            <input placeholder="canceller's subscription or internal id..." name='sub_id' type='text' required/>
-          </label>
-   </fieldset>
-   <fieldset>
-          <label>
-            <span>Retention App ID</span>
-            <input placeholder="Brightback app_Id..." name='app_id' type='text' required/>
-          </label>
-   </fieldset>
+</head>
+
+<body>
+  <h3>Retention Link Generator</h3>
+
+  <div class='form-modal'>
+    <form onsubmit='window.generateBrightbackLink(event)'>
+
+
+      <fieldset>
+        <label>
+          <span>Email Address</span>
+          <input placeholder="canceller's email address..." name='email' type='text' required />
+        </label>
+      </fieldset>
+      <fieldset>
+        <label>
+          <span>Subscription Id</span>
+          <input placeholder="canceller's subscription or internal id..." name='sub_id' type='text' required />
+        </label>
+      </fieldset>
+      <fieldset>
+        <label>
+          <span>Retention App ID</span>
+          <input placeholder="Brightback app_Id..." name='app_id' type='text' required />
+        </label>
+      </fieldset>
 
 
 
-        <button type='submit'>Generate Link</button>
+      <button type='submit'>Generate Link</button>
 
-        <hr />
+      <hr />
 
-        <fieldset>
-          <label>
-            <span>Generated Link: </span>
-            <input type='text' id='url-destination' onclick="this.select();"/>
+      <fieldset>
+        <label>
+          <span>Generated Link: </span>
+          <input type='text' id='url-destination' onclick="this.select();" />
 
-          </label>
-        </fieldset>
-        <script> function followLink() {
-        window.open(document.querySelector('#url-destination').value, "_blank");
+        </label>
+      </fieldset>
+      <script> function followLink() {
+          window.open(document.querySelector('#url-destination').value, "_blank");
         };
-        </script>
-              <button type='button' id='link-destination' onclick="followLink()">Launch Cancel Experience</button>
-      </form>
-    </div>
+      </script>
+      <button type='button' id='link-destination' onclick="followLink()">Launch Cancel Experience</button>
+    </form>
+  </div>
 
-    <script type='text/javascript' src='https://app.brightback.com/js/current/brightback.js'></script>
+  <script type='text/javascript' src='https://app.brightback.com/js/current/brightback.js'></script>
 
-    <script type='text/javascript'>
+  <script type='text/javascript'>
 
+    const serializeForm = function (formElement) {
+      return [...formElement.elements]
+        .filter((element) => element.value)
+        .reduce(function (memo, element) {
+          memo[element.name] = element.value;
+          return memo;
+        }, {});
+    }
 
-      const serializeForm = function(formElement) {
-        return [...formElement.elements]
-          .filter((element) => element.value)
-          .reduce(function(memo, element) {
-            memo[element.name] = element.value;
-            return memo;
-          }, {});
+    window.generateBrightbackLink = function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+
+      const attributes = serializeForm(event.target);
+
+      if (window.Brightback) {
+        window.Brightback.handleDataPromise({
+          app_id: attributes.app_id,
+          subscription_id: attributes.sub_id,
+          email: attributes.email,
+          account: {
+            internal_id: attributes.sub_id,
+          },
+          "for_testing": true,
+
+        })
+          .then(function (result) {
+            if (result.valid) {
+              document.querySelector('#url-destination').value = result.url + "isdryRun=true";
+            }
+          });
       }
+    }
 
-      window.generateBrightbackLink = function(event) {
-        event.stopPropagation();
-        event.preventDefault();
+  </script>
+</body>
 
-        const attributes = serializeForm(event.target);
-
-        if (window.Brightback) {
-          window.Brightback.handleDataPromise({
-            app_id: attributes.app_id,
-            subscription_id: attributes.sub_id,
-            email: attributes.email,
-            account: {
-              internal_id: attributes.sub_id,
-            },
-            "for_testing": true,
-
-          })
-            .then(function(result) {
-              if (result.valid) {
-                document.querySelector('#url-destination').value = result.url + "isdryRun=true";
-              }
-            });
-        }
-      }
-
-    </script>
-  </body>
-  </html>
+</html>
