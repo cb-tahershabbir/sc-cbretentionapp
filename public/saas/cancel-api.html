@@ -5,9 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Account Portal</title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="../assets/images/saaslogos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
   <script>
+
+    //API call using JavaScript fetch() method to generate Cancel URL
+
     async function cancel() {
       var subId = document.getElementById('subid').value;
       requestObj = {
@@ -24,6 +27,9 @@
           'Content-Type': 'application/json'
         }
       });
+
+      //Appends isdryRun=true flag to URL to prevent cancellations affecting subscriptions
+
       const myJson = await response.json();
       if (myJson && myJson.valid) {
         var url = myJson.url;
@@ -46,7 +52,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index-api.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="../assets/images/saaslogos/dark-logo.svg" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -165,7 +171,8 @@
                       </div>
                       <div class="col-md-6">
                         <label for="subid" class="form-label">Subscription ID</label>
-                        <input type="text" class="form-control" id="subid" placeholder="Enter the Susbcription ID to cancel" required />
+                        <input type="text" class="form-control" id="subid"
+                          placeholder="Enter the Susbcription ID to cancel" required />
                         <div id="subHelp" class="form-text">REQUIRED</div>
                       </div>
                       <div class="col-12" style="text-align: center;">
