@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Account Portal</title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="../assets/images/ecommlogos/favicon.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
 </head>
 
@@ -20,7 +20,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index-js.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="../assets/images/ecommlogos/dark-logo.svg" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -207,6 +207,8 @@
 
       const attributes = serializeForm(event.target);
 
+      // JavaScript method to generate Cancel URL with hardcoded Retention App ID
+
       if (window.Brightback) {
         window.Brightback.handleDataPromise({
           app_id: "zKbrjpADGY",
@@ -217,24 +219,14 @@
         })
           .then(function (result) {
             if (result.valid) {
+
+              //Appends isdryRun=true flag to URL to prevent cancellations affecting subscriptions
+
               document.querySelector('#url-destination').value = result.url + "?isdryRun=true";
             }
           });
       }
     }
-
-//    Old code!
-//    var subId = document.getElementById('subid').value;
-//    var accountId = document.getElementById('accountid').value;
-//    if (window.Brightback) {
-//      window.Brightback.handleData({
-//        "app_id": "zKbrjpADGY",
-//        "subscription_id": subId,
-//        "account": {
-//          "internal_id": accountId
-//        }
-//      })
-//    }
 
   </script>
 </body>
