@@ -37,7 +37,7 @@ app.post("/api/generate_checkout_new_url", (req, res) => {
   });
 });
 
-// Portal via API
+// Portal via API for Premium customer
 app.post("/api/generate_portal_session", (req, res) => {
   chargebee.configure({
     site: "retentiondemo-test",
@@ -46,6 +46,46 @@ app.post("/api/generate_portal_session", (req, res) => {
   chargebee.portal_session.create({
     customer: {
       id: "6olOsTTHoBwTi1"
+    }
+  }).request(function (error, result) {
+    if (error) {
+      //handle error
+      console.log(error);
+    } else {
+      res.send(result.portal_session);
+    }
+  });
+});
+
+// Portal via API for trial customer
+app.post("/api/generate_portal_session_trial", (req, res) => {
+  chargebee.configure({
+    site: "retentiondemo-test",
+    api_key: "test_QNFQvyrZr7PccdY9rLaT3Q9IjVfA4d9se"
+  });
+  chargebee.portal_session.create({
+    customer: {
+      id: "16CM8iTTuvxMT8j3"
+    }
+  }).request(function (error, result) {
+    if (error) {
+      //handle error
+      console.log(error);
+    } else {
+      res.send(result.portal_session);
+    }
+  });
+});
+
+// Portal via API for freemium customer
+app.post("/api/generate_portal_session_freemium", (req, res) => {
+  chargebee.configure({
+    site: "retentiondemo-test",
+    api_key: "test_QNFQvyrZr7PccdY9rLaT3Q9IjVfA4d9se"
+  });
+  chargebee.portal_session.create({
+    customer: {
+      id: "6olOsTTHnx8rhZ      "
     }
   }).request(function (error, result) {
     if (error) {
