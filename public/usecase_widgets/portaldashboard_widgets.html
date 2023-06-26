@@ -76,7 +76,7 @@
                       stroke="#C2CFE0" stroke-width="1.4" />
                   </svg>
 
-                  <span class="nav-label"id="manage-payment-methods">Manage Payment methods</span>
+                  <span class="nav-label"id="payment-methods">Manage Payment methods</span>
                 </div>
               </a>
             </li>
@@ -494,7 +494,7 @@
         event.stopPropagation();
         event.preventDefault();
         cbInstance.createChargebeePortal().openSection({
-          sectionType: Chargebee.getPortalSections().PVIEW_PAYMENT_SOURCE
+          sectionType: Chargebee.getPortalSections().VIEW_PAYMENT_SOURCE
         }
         );
       });
