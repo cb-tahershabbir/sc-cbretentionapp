@@ -97,15 +97,32 @@ app.post("/api/generate_portal_session_freemium", (req, res) => {
   });
 });
 
+// widget link generator
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Retrieve the parameter values from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const sitedomain = urlParams.get('site_domain');
+  const subscriptionId = urlParams.get('subscription_id');
+  const customerId = urlParams.get('customer_id');
+  const apikey = urlParams.get('api_key');
+
+  // Update the value in the HTML elements
+  document.getElementById('site_domain').textContent = sitedomain;
+  document.getElementById('subscription_id').textContent = subscriptionId;
+  document.getElementById('customer_id').textContent = customerId;
+  document.getElementById('api_key').textContent = apikey;
+});
+
 // Portal via API for widgets
 app.post("/api/generate_portal_session_widgets", (req, res) => {
   chargebee.configure({
-    site: "retentiondemo-test",
-    api_key: "test_QNFQvyrZr7PccdY9rLaT3Q9IjVfA4d9se"
+    site: sitedomain,
+    api_key: apikey
   });
   chargebee.portal_session.create({
     customer: {
-      id: "6olOsTTHoBwTi1"
+      id: customerId
     }
   }).request(function (error, result) {
     if (error) {
