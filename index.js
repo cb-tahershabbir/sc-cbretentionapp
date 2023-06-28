@@ -117,12 +117,12 @@ document.addEventListener('DOMContentLoaded', function() {
 // Portal via API for widgets
 app.post("/api/generate_portal_session_widgets", (req, res) => {
   chargebee.configure({
-    site: sitedomain,
-    api_key: apikey
+    site:  document.getElementById('site_domain').textContent = sitedomain,
+    api_key: document.getElementById('api_key').textContent = apikey
   });
   chargebee.portal_session.create({
     customer: {
-      id: customerId
+      id: document.getElementById('customer_id').textContent = customerId
     }
   }).request(function (error, result) {
     if (error) {
