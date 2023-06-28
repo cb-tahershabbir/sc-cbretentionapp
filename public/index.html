@@ -4,6 +4,33 @@
 <!--comment-->
 
 <head>
+  <title>Site ID Form</title>
+  <script>
+    function submitForm() {
+      // Retrieve the site ID from the input field
+      var siteId = document.getElementById("siteId").value;
+
+      // Create a JSON object with the site ID
+      var data = {
+        siteId: siteId
+      };
+
+      // Convert the JSON object to a string
+      var jsonData = JSON.stringify(data);
+
+      // Log the JSON data (you can modify this to send the data to your desired endpoint)
+      console.log(jsonData);
+      function submitForm() {
+
+  // Encode the site ID for URL compatibility
+  var encodedSiteId = encodeURIComponent(siteId);
+
+  // Redirect to the target HTML page with the site ID as a URL parameter
+  window.location.href = "nivedha testing/portaldashboard_widgets copy.html?siteId=" + encodedSiteId;
+}
+    }
+  </script>
+     
   <meta charset="UTF-8">
   <title>Retention Demo</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
@@ -96,7 +123,13 @@
                     <h6 class="my-0">Portal - testing</h6>
                     <small class="text-muted">Site: retentiondemo-test.chargebee.com</small>
                   </div>
-                  <a href="usecase_widgets/portaldashboard_widgets copy.html"> <span class="text-muted">Link</span> </a>
+                  <form>
+                    <label for="siteId">Site ID:</label>
+                    <input type="text" id="siteId" name="siteId" required>
+                    <br><br>
+                    <input type="button" value="Submit" onclick="submitForm()">
+                  </form>
+                  <a href="nivedha testing/portaldashboard_widgets copy.html"> <span class="text-muted">Link</span> </a>
                 </li>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
